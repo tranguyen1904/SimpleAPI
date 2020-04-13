@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using TestAPI.Contracts;
 using TestAPI.Models;
 
@@ -13,7 +11,8 @@ namespace TestAPI.Repositories
     {
         protected TestAPIContext _context;
 
-        public RepositoryBase(TestAPIContext context){
+        public RepositoryBase(TestAPIContext context)
+        {
             _context = context;
         }
 
@@ -41,6 +40,6 @@ namespace TestAPI.Repositories
         {
             _context.Set<T>().Remove(entity);
         }
-        
+
     }
 }

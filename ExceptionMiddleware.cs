@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using TestAPI.Contracts;
@@ -25,7 +23,8 @@ namespace TestAPI
             try
             {
                 await _next(httpContext);
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 _logger.LogError($"Something went wrong: {e}");
                 await HandleExceptionAsync(httpContext, e);

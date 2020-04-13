@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestAPI.Models;
 
 namespace TestAPI.Contracts
 {
-    public interface IOrderDetailRepository: IRepositoryBase<OrderDetail>
+    public interface IOrderDetailRepository : IRepositoryBase<OrderDetail>
     {
         Task<IEnumerable<OrderDetail>> GetOrderDetailsAsync();
         Task<OrderDetail> GetOrderDetailById(int id);

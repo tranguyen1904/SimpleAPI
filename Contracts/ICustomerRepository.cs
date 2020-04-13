@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestAPI.Models;
-using TestAPI.ViewModels;
 
 namespace TestAPI.Contracts
 {
-    public interface ICustomerRepository: IRepositoryBase<Customer>
+    public interface ICustomerRepository : IRepositoryBase<Customer>
     {
         Task<IEnumerable<Customer>> GetCustomersAsync();
         Task<Customer> GetCustomerById(int id);

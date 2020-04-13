@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TestAPI.Contracts;
 
 namespace TestAPI.Models
 {
-    public partial class Employee: IEntity
+    public partial class Employee : IEntity
     {
         public Employee()
         {

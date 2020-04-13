@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TestAPI.Contracts;
 
 namespace TestAPI.Models
 {
-    public partial class Customer: IEntity
+    public partial class Customer : IEntity
     {
         public Customer()
         {
             PurchaseOrder = new HashSet<PurchaseOrder>();
-            
+
         }
-        
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Gender { get; set; }

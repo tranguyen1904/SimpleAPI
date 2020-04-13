@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 using TestAPI.Contracts;
@@ -9,9 +7,9 @@ using TestAPI.Models;
 
 namespace TestAPI.Repositories
 {
-    public class OrderDetailRepository: RepositoryBase<OrderDetail>, IOrderDetailRepository
+    public class OrderDetailRepository : RepositoryBase<OrderDetail>, IOrderDetailRepository
     {
-        public OrderDetailRepository(TestAPIContext context):base(context)
+        public OrderDetailRepository(TestAPIContext context) : base(context)
         {
         }
 

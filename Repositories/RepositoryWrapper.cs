@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using TestAPI.Contracts;
 using TestAPI.Models;
 
 namespace TestAPI.Repositories
 {
-    public class RepositoryWrapper: IRepositoryWrapper
+    public class RepositoryWrapper : IRepositoryWrapper
     {
         private TestAPIContext _context;
         private ICustomerRepository _customer;
@@ -45,7 +42,7 @@ namespace TestAPI.Repositories
                 return _product;
             }
         }
-        
+
         public IEmployeeRepository Employee
         {
             get
@@ -69,7 +66,7 @@ namespace TestAPI.Repositories
                 return _orderDetail;
             }
         }
-        
+
 
         public IPurchaseOrderRepository PurchaseOrder
         {
@@ -92,11 +89,11 @@ namespace TestAPI.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public IRepositoryBase<T> GetRepo<T>() where T: IEntity
+        public IRepositoryBase<T> GetRepo<T>() where T : IEntity
         {
             Type type = this.GetType();
             var propertyInfo = type.GetProperty(typeof(T).Name);
-            IRepositoryBase<T> propertyValue = (propertyInfo == null)?null: (IRepositoryBase<T>) propertyInfo.GetValue(this, null);
+            IRepositoryBase<T> propertyValue = (propertyInfo == null) ? null : (IRepositoryBase<T>)propertyInfo.GetValue(this, null);
             return propertyValue;
         }
     }

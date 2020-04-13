@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using TestAPI.Contracts;
 
 namespace TestAPI.ViewModels
 {
-    public class ProductViewModel: IEntity
+    public class ProductViewModel : IEntity
     {
 
         [Required]

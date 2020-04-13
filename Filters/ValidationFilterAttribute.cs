@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestAPI.Contracts;
@@ -20,7 +18,7 @@ namespace TestAPI.Filters
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
-        {            
+        {
             var param = context.ActionArguments.SingleOrDefault(pr => pr.Value is IEntity);
             if (param.Value == null)
             {
@@ -30,7 +28,7 @@ namespace TestAPI.Filters
 
             if (!context.ModelState.IsValid)
             {
-                _logger.LogError("Model State Invalid\n" + string.Join('\n',context.ModelState.GetErrorMessages()));
+                _logger.LogError("Model State Invalid\n" + string.Join('\n', context.ModelState.GetErrorMessages()));
                 context.Result = new BadRequestObjectResult(context.ModelState);
                 return;
             }

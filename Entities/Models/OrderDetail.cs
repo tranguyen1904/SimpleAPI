@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using TestAPI.Contracts;
+﻿using TestAPI.Contracts;
 
 namespace TestAPI.Models
 {
-    public partial class OrderDetail: IEntity
+    public partial class OrderDetail : IEntity
     {
         public int Id { get; set; }
         public int OrderId { get; set; }

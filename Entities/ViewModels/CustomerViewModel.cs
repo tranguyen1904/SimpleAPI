@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using TestAPI.Contracts;
 
 namespace TestAPI.ViewModels
 {
-    public class CustomerViewModel: IEntity
+    public class CustomerViewModel : IEntity
     {
         [Required]
         public int Id { get; set; }
