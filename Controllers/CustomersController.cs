@@ -1,8 +1,11 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TestAPI.Contracts;
 using TestAPI.Filters;
 using TestAPI.Models;
@@ -14,12 +17,12 @@ namespace TestAPI.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-
+        
         private IMapper _mapper;
         private IRepositoryWrapper _repoWrapper;
         private ILoggerManager _logger;
         public CustomersController(IMapper mapper, IRepositoryWrapper repoWrapper, ILoggerManager logger)
-        {
+        {            
             _mapper = mapper;
             _repoWrapper = repoWrapper;
             _logger = logger;
@@ -27,7 +30,7 @@ namespace TestAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetCustomers()
-        {
+        {       
             var customers = await _repoWrapper.Customer.GetCustomersAsync();
             _logger.LogInfo(LogMessage.GetAll(nameof(Customer)));
             return Ok(_mapper.Map<IEnumerable<CustomerViewModel>>(customers));
@@ -44,9 +47,9 @@ namespace TestAPI.Controllers
         }
 
         [HttpPost]
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]        
         public async Task<ActionResult> PostCustomer([FromBody] CustomerViewModel customerVM)
-        {
+        {            
             Customer customer = await _repoWrapper.Customer.GetCustomerById(customerVM.Id);
             if (customer != null)
             {
@@ -71,7 +74,7 @@ namespace TestAPI.Controllers
         [ServiceFilter(typeof(ValidateEntityExistsAttribute<Customer>))]
         public async Task<ActionResult> PutCustomer(int id, CustomerViewModel customerVM)
         {
-
+            
             if (id != customerVM.Id)
             {
                 _logger.LogError(LogMessage.IdNotMatch());

@@ -4,7 +4,7 @@ using TestAPI.Contracts;
 
 namespace TestAPI.Models
 {
-    public partial class PurchaseOrder : IEntity
+    public partial class PurchaseOrder: IEntity
     {
         public PurchaseOrder()
         {

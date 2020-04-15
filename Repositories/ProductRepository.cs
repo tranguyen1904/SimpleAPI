@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using TestAPI.Contracts;
@@ -7,9 +9,9 @@ using TestAPI.Models;
 
 namespace TestAPI.Repositories
 {
-    public class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public class ProductRepository: RepositoryBase<Product>, IProductRepository
     {
-        public ProductRepository(TestAPIContext context) : base(context)
+        public ProductRepository(TestAPIContext context):base(context)
         {
         }
 

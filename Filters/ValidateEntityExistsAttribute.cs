@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TestAPI.Contracts;
 using TestAPI.Controllers;
+using TestAPI.Models;
+using TestAPI.Repositories;
 
 namespace TestAPI.Filters
 {
@@ -20,7 +25,7 @@ namespace TestAPI.Filters
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            int id = 0;
+            int id=0;
             if (context.ActionArguments.ContainsKey("id"))
             {
                 id = (int)context.ActionArguments["id"];
@@ -36,7 +41,7 @@ namespace TestAPI.Filters
                 context.Result = new BadRequestObjectResult("Error");
                 return;
             }
-            var entity = await repo.FindByCondition(x => x.Id == id).FirstOrDefaultAsync();
+            var entity = await repo.FindByCondition(x => x.Id==id).FirstOrDefaultAsync();
             if (entity == null)
             {
                 _logger.LogError(LogMessage.NotFound(typeof(T).Name, id));
